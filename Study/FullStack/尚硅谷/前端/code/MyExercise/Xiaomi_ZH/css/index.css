@@ -1,0 +1,488 @@
+/* 屏幕侧边固定导航条 */
+.fixed-nav{
+    height: 561px;
+    width: 84px;
+    position: fixed;
+    right: 0;
+    bottom: 70px;
+    z-index: 99;
+}
+.fixed-nav ul{
+    border-collapse: collapse;
+}
+.fixed-nav li{
+    list-style-type: none;
+    height: 92px;
+    width: 84px;
+    background-color: #fff;
+    border: 1px solid #f5f5f5;
+    margin: -1px 0px;    
+}
+.fixed-li-1 img{
+    margin-top: 18px ;
+    margin-left: 26px;
+    width: 30px;
+    height: 30px;
+    /* color: #999999; */
+    /* background-color: #999999; */
+}
+.fixed-li-1 span{
+    display: inline-block;
+    /* width: 100%; */
+    margin: 2px 0px 0px 13px;
+    color: #757575;
+}
+
+
+
+
+/* 最上层导航条 */
+.topbar-wrapper{
+    height: 40px;
+    background-color: #333333;
+}
+.topbar{
+    height: 100%;
+    width: 1226px;
+    margin: 0 auto;
+    line-height: 40px;
+    
+}
+.topbar-wrapper a{
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.servive {
+    float: left; 
+}
+
+.shop-cart{
+    position: relative;
+    width: 120px;
+    background-color: #424242;
+    height: 100%;
+    text-align: center;
+    margin-left: 15px;
+    z-index: 33;
+}
+
+
+.shop-cart, 
+.user-info{
+    float: right;
+}
+
+.shop-cart:hover{
+    color:#FF6700;
+    background-color: #ffffff;
+}
+.shop-cart:hover::after{
+    content: '';
+    position: absolute;
+    height: 0;
+    border: 8px solid #fff;
+    top: 25px;
+    left: 0;
+    right: 0;
+    /* margin:auto; */
+}
+
+.shop-cart:hover .cart-drop{
+    height:100px;
+    /* display: block; */
+    transition: 0.3s;
+}
+.cart-drop{
+    background-color: #ffffff;
+    width: 316px;
+    height: 0px;
+    float: right;
+    box-shadow: 0 2px 10px rgba(0,0,0,.15);
+
+}
+
+
+.service li,
+.user-info li{
+    float: left;
+}
+
+.topbar a:link{
+    color:#b0b0b0;
+}
+
+.topbar a:hover,
+.topbar a:active{
+    color:#ffffff;
+}
+
+.line{
+    margin: 0 8px;
+    color:#424242;
+}
+
+
+.download{
+    position: relative;
+}
+.download::after{
+    content: '';
+    position: absolute;
+    display: none;
+    width: 0;
+    height: 10;
+    border: 8px solid transparent;
+    border-bottom-color: #fff;
+    bottom: -12px;
+    left: 0;
+    right: 0;
+    margin:auto;
+}
+
+
+.download-li{
+    position: relative;
+}
+.app-drop{
+    height: 0px;
+    overflow: hidden;
+    width: 124px;
+    background-color: #fff;
+    position: absolute;
+    margin-top: -1px;
+    left: -40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+}
+.download:hover::after,
+.download:hover .app-drop{
+    display: block;
+    height: 148px;
+    transition: 0.3s;
+}
+.app-drop img{
+    width: 90px;
+    margin: 17px;
+    margin-bottom: -15px;
+}
+
+.app-drop span{
+    font-size: 14px;
+    color: #000;
+    margin: 0 0 10px 17px;
+    
+}
+
+
+
+
+
+
+
+.second-bar-wrapper{
+    height: 100px;
+    width: 100%;
+}
+.top-nav{
+    height: 100px;
+    /* background-color: #ccc; */   
+}
+
+.top-nav .logo{
+    height: 100px;
+    width: 55px;
+    /* background-color: #aaa; */
+    float: left;
+    margin-top: -1px;
+}
+.logo a{
+    position: relative;
+    display: inline-block;
+    margin: 22.5px 0px 0px 0px;
+    width: 55px;
+    height: 55px;
+    background-color: #FF6700;
+    overflow: hidden;
+    /* background-image: url(/MyExercise/Xiaomi_ZH/image/mi-logo.png);
+    background-position: center; */
+}
+.home-a{
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    left: -55px;
+    transition:  0.3s;
+}
+.home-b{
+    width: 55px;
+    height: 55px;
+    position: absolute;
+    left: 0px;
+    transition:  0.3s;
+}
+.logo a:hover .home-a{
+    left: 0px;
+    transition: 0.3s;
+}
+.logo a:hover .home-b{
+    left: 55px;
+    transition:  0.3s;
+}
+
+
+
+.nav-wrapper{
+    /* position: relative; */
+    float: left;
+    width: 850px;
+    margin-left: 7px;
+}
+.nav-wrapper .nav{
+    margin-left: 65px;
+}
+.nav-wrapper .nav li a{
+    text-decoration: none;
+    font-size: 16px;
+    margin: auto 0px;
+    color: #333333;
+}
+.nav-wrapper .nav li a:hover{
+    color: #ff6700;
+}
+.nav-wrapper .nav li{
+    line-height: 100px;
+    float:left;
+    margin-right: 20px; 
+}
+
+.nav-first-li{
+    visibility: hidden;
+}
+.header-down{
+    top: 140px;
+    position: absolute;
+    width: 100%;
+    height: 0px;
+    background-color: #fff;
+    left: 0;
+}
+.nav-down-hover:hover + .header-down{
+    height: 200px;
+    transition: 0.3s;
+    border-top: 1px solid #e0e0e0;
+    box-shadow: 0px 5px 5px -4px #D6D6D6;
+}
+
+.search{
+    float: right;
+    /* line-height: 100px; */
+    width: 296px;
+    height: 50px;
+    /* background-color: red; */
+    margin-top: 25px;
+    border: 1px solid rgb(224, 224, 224);
+}
+.search .search-submit{
+    float: left;
+    border: none;
+    height: 50px;
+    width: 54px;
+    border-left: 1px solid rgb(224, 224, 224);
+    background-color: #fff;
+    outline: none;
+}
+.search .search-input{
+    height: 50px;
+    width: 222px;
+    padding: 0;
+    float: left;
+    border:none;
+    padding: 0 10px ;
+    font-size: 16px;
+    outline: none;
+}
+.search .search-submit i{
+    font-size: 16px;
+    color: #616161;
+}
+
+.search .search-submit:hover{
+    background-color: #ff6700;
+}
+.search .search-submit:hover i{
+    color: #fff; 
+    border:none;   
+}
+.search:hover{
+    border: 1px solid #b0b0b0;
+}
+.search:hover .search-submit{
+    border-left: 1px solid #b0b0b0;
+}
+
+
+
+
+
+
+
+main{
+    height: 644px;
+    width: 1226px;
+    /* background-color: #bfa; */
+    margin: 0px auto 26px;
+}
+.slide-pic{
+    width: 100%;
+    height: 460px;
+    background-image: url(/MyExercise/Xiaomi_ZH/image/5.webp);
+    background-size:100% 100%;
+}
+.slide-pic-nav{
+    /* margin-top: -1px; */
+    /* float: left; */
+    display: inline-block;
+    height: 460px;
+    width: 234px;
+    background-color: rgba(105,101,101,.6);
+    overflow: hidden;
+}
+.slide-pic-nav-ul{
+    margin:20px 0px;
+}
+.slide-pic-nav-li:hover{
+    background-color: #ff6700;
+}
+.slide-pic-nav .slide-pic-nav-li{
+    list-style-type: none;
+    height: 42px;  
+}
+.slide-pic-nav-a i{
+    float: right;
+    margin-right: 24px;
+    line-height: 42px;
+}
+
+
+.slide-pic-nav .slide-pic-nav-a{
+    font-size: 14px;
+    text-decoration: none;
+    color: #fff;
+    line-height: 42px;
+    margin-left: 30px;
+}
+.side-pic-button{
+    /* position: relative; */
+    border: none;
+    margin-top: 418px;
+    float: right;
+    height: 21px;
+    width: 200px;
+    /* background-color: #bfa; */
+    margin-right: 30px;
+}
+.side-pic-button span{
+    float: right;
+    display: inline-block;
+    line-height: 100%;
+    height: 6px;
+    width: 6px;
+    border-radius: 50%;
+    background-color: rgb(0,0,0, 0.4);   
+    border: 2px solid #fff;
+    border-color: hsla(0, 0%, 100%, 0.3);
+    margin: 5px 4px;
+    cursor: pointer;
+}
+.side-pic-button span:hover,
+.side-pic-button span:active{
+    background-color: rgb(0255,255,255,.4);  
+}
+
+main .down-bar{
+    width: 100%;
+    height: 170px;
+    margin-top: 14px;
+    /* background-color: #bfa; */
+}
+.down-bar-1{
+    width: 234px;
+    height: 170px;
+    background-color:#5f5750;
+    float: left;
+}
+.down-bar-other{
+    float: left;
+    width: 316px;
+    height: 170px;
+    margin-left: 14px;
+    background-color: #aaa;
+}
+.down-bar > a:last-child div{
+    width: 318px;
+    background-image: url(/MyExercise/Xiaomi_ZH/image/down3.jpg);
+    background-size: cover;
+}
+.down-bar > a:nth-child(2) div{
+    background-image: url(/MyExercise/Xiaomi_ZH/image/down1.jpg);
+    background-size: cover;
+}
+.down-bar > a:nth-child(3) div{
+    background-image: url(/MyExercise/Xiaomi_ZH/image/down2.jpg);
+    background-size: cover;
+}
+.down-bar-nav-ul{
+    padding: 3px;
+}
+.down-bar-nav-ul li{
+    position: relative;
+    width: 70px;
+    height: 82px;
+    padding: 0px 3px;
+    background-color: #5f5750;
+    position: relative;
+    float: left;
+}
+.down-bar-nav-li-1 a{
+    display: block;
+    padding-top: 18px;
+    width: 70px;
+    height: 64px;
+    text-decoration: none;
+    font-size: 12px;
+    color: #fff;
+    opacity: .7;
+    text-align: center;
+}
+.down-bar-nav-li-1 a img{
+    height: 24px;
+    width: 24px;
+    margin: 0 23px 4px 23px;
+}
+.down-bar-nav li::before{
+    content: "";
+    display: block;
+    width: 64px;
+    height: 1px;
+    background-color: #665e57;
+    /* background-color: #fff; */
+    position: absolute;
+    left: 6px;
+}
+.down-bar-nav li::after{
+    content: "";
+    display: block;
+    width: 1px;
+    height: 70px;
+    background-color: #665e57;
+    /* background-color: #fff; */
+    position: absolute;
+    top: 6px;
+}
+
+
+
+.space{
+    height: 500px;
+    background-color: #bbb;
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./03_layout/css/reset.css">
+    <title>Severside</title>
+
+    <style>
+        a{
+            text-decoration: none;    
+        }
+        .border{
+            display: inline-block;
+            height: 12px;
+            width: 1px;
+            border:0px solid transparent;
+            background-color: grey;
+            margin: 0 4px;
+        }
+        .box{
+            position:relative;
+            width: 200px;
+            height: 200px;
+            margin: auto;
+            background-color: #faa;
+            /* border-top: 10px solid #fff; */
+            /* padding: 50px; */
+            box-shadow: 0px 0px 10px rgba(0,0,0,1); 
+        }
+        .box::before{
+            position: absolute;
+            content: '';
+            /* height: 200px; */
+            width: 180px;
+            top:-10px;
+            /* background-color: #bfc; */
+            border:10px solid #fba;
+        }
+
+        .img-hover{
+            height: 200px;
+            width: 200px;
+            background-color: rgba(254, 234, 234, 0.6);
+            
+
+        }
+        .asd{
+            height: 100px;
+            width: 100px;
+            background-color:  rgb(254, 234, 234);
+            border: 1px solid black;
+        }
+
+
+        .img{
+            display: block;
+            width: 1200px;
+            visibility: hidden;
+            opacity: 0;
+            transition: 1s;
+        }
+
+        .img-hover:hover ~ .img{
+            /* background-color: #bfa; */
+            visibility:visible;
+           opacity: 1;
+            
+            transition: 1s;
+        }
+        .div{
+            position: relative;
+            height: 200px;
+            width: 200px;
+            background-color: #aaa;
+            margin: 100px auto;
+        }
+        .div::before{
+            content: "";
+            width: 1px;
+            height: 180px;
+            background-color: black;
+            background: #665e57;
+            position: absolute;
+            top: 10px
+        }
+
+    </style>
+</head>
+<body>
+    <H2>Data recieved</H2>
+    <br><br>
+    <a href="index.html">Go back</a><div class="border"></div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="box"></div>
+    
+    <br>
+    <br>
+    <div class="img-hover">
+        <div class="asd"></div>
+    </div>
+    <br>
+    <img class="img" src="MyExercise\Xiaomi_ZH\image\1.jpg" alt="">
+
+    <div class="div">
+
+    </div>
+</body>
+</html>

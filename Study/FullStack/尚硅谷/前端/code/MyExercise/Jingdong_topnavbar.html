@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment</title>
+    <link rel="stylesheet" href="/exercise/css/reset.css">
+    <link rel="stylesheet" href="/exercise/fa/css/all.css">
+
+    <style>
+        .clearfix::before,
+        .clearfix::after{
+            content: '';
+            display: table;
+            clear: both;
+        }
+
+        body{
+            font-family: '微软雅黑';
+        }
+        a{
+            text-decoration: none;
+        }
+        .navbarwrapper{
+            height: 30px;
+            background-color: #E3E4E5;
+
+        }
+        .navbar{
+            height: 30px;
+            width: 1190px;
+            margin: 0 auto;
+            background-color: #E3E4E5;
+            color: #999;
+        }
+        li{
+
+            font-size: 12px;
+            padding:auto 0px;
+            height:28px;
+            line-height: 28px;
+        }
+        .nav, .spacer{
+            float: right;
+            margin: 0px 7px;
+        }
+        .spacer{
+            width: 1px;
+            height: 10px;
+            overflow: hidden;
+            background-color:#ccc;
+            margin: 11px 5px 0;
+        }
+
+        .a{
+            float: left;
+            padding: 0 4px;
+            
+        }
+        .a .fas{
+            font-size: 14px;
+            color: #F10215;
+            line-height: 28px;
+            margin-right: 4px;
+            /* height: 14px;
+            width: 15px; */
+        }
+        .c .fas, .d .fas, .g .fas{
+            margin-left:6px;
+            font-size: 8px;
+            height: 12px;
+            width: 12px;
+        }
+        a:link{
+            color:#999 ;
+        }
+        .e a, .i a{
+            color: red;
+        }
+        .drop{
+            width: 320px;
+            height: 462px;
+            background-color: #bfa;
+            margin-top: 2px;
+            display: none;
+        }
+        .a1:hover .drop{
+            display: block;
+        }
+        
+
+
+    </style>
+</head>
+
+<body>
+
+    <div class="navbarwrapper">
+        <ul class="navbar clearfix">
+            <div class="a1">
+                <!-- <a href="javascript:;"> -->
+                    <li class="nav a clearfix">
+                        <span class="fas">&#xf3c5;</span>
+                        海外
+                        <div class="drop">
+
+                        </div>
+                    </li>
+                <!-- </a> -->
+                
+            </div>
+            
+            <li class="nav b"><a href="javascript:;">手机京东</a></li>
+            <li class="spacer"></li>
+            <li class="nav c"><a href="javascript:;">网站导航</a><span class="fas">&#xf107;</span></li>
+            <li class="spacer"></li>
+            <li class="nav d"><a href="javascript:;">客户服务</a><span class="fas">&#xf107;</span></li>
+            <li class="spacer"></li>
+            <li class="nav e"><a href="javascript:;">企业采购</a></li>
+            <li class="spacer"></li>
+            <li class="nav f"><a href="javascript:;">京东会员</a></li>
+            <li class="spacer"></li>
+            <li class="nav g"><a href="javascript:;">我的京东</a><span class="fas">&#xf107;</span></li>
+            <li class="spacer"></li>
+            <li class="nav h"><a href="javascript:;">我的订单</a></li>
+            <li class="spacer"></li>
+            <li class="nav i"><a href="javascript:;">免费注册</a></li>
+            <li class="nav j"><a href="javascript:;">你好，请登录</a></li>        
+        </ul>
+    </div>
+
+
+
+
+
+</body>
+
+</body>
+
+</html>
