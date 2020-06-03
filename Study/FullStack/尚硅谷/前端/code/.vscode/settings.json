@@ -1,4 +1,5 @@
 {
     "editor.fontLigatures": null,
-    "editor.fontFamily": "Consolas, '微软雅黑', monospace"
+    "editor.fontFamily": "Consolas, '微软雅黑', monospace",
+    "git.ignoreLimitWarning": true
 }
