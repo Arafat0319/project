@@ -156,24 +156,24 @@ printf命令
 流程控制
 	1）if判断
 		if [ confition ];then
-			code here
+			statment block
 		elif [ condition ];then
-			code here
+			statment block
 		else
-			code here
+			statment block
 		fi
 		或者
 		if [ conditon ]
 			then
-				code here
+				statment block
 		fi
 	2) case语句
 		case $变量名 in
 		"值1“）
-			code here
+			statment block
 		;;
 		"值2“）
-			code here
+			statment block
 		;;
 		*)
 			如果前面的所有case都没有match,则执行这个。相当于default
@@ -182,22 +182,22 @@ printf命令
 	3)for循环
 		for(( 变量；循环控制条件；变量变化 ))
 		do
-			code here
+			statment block
 		done
 		或者
 		for 变量 in 值1 值2 ...
 		do
-			code here
+			statment block
 		done
 	4）while循环
 		while[ condition ]
 		do
-			code here
+			statment block
 		done
 	5) until循环
 		until[condition]
 		do
-			code here
+			statment block
 		done
 	6) break
 		跳出循环
@@ -279,7 +279,3 @@ Shell工具
 			-r	相反的顺序排序
 			-t	设置排序时的分隔字符
 			-k	指定需要排序的列
-			
-				
-		
-			
