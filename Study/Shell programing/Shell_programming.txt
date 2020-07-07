@@ -1,0 +1,281 @@
+				Shell programing
+shell是一种解释器，用户和程序可以通过shell命令，调用系统的内核
+
+shell的config文件在etc/shells里面，规定了系统可用的shell
+shell的原文件在系统的bin文件夹里面
+	在开发中常用的基本上是bin/bash和bin/sh
+	系统默认是bin/bash,sh是符号连接（软连接）指向bin/dash的
+	
+编写shell脚本
+	#!/bin/bash	#!是告诉系统使用那个解释器（不写这个也会用默认的bash,但最好写上）
+	文件要用.sh格式
+	
+执行方式
+	1） 在terminal里面在键入 shell名称 文件名。  比如： dash test.sh
+	2）给脚本文件加上可执行权限，然后在terminal里面直接执行 （相对路径）./文件名  或者 （绝对路径）/home/Desktop/test.sh
+注释
+	1）#			单行注释
+	2）:<<! 内容 !		多行注释
+
+变量
+	1） 系统变量
+		$HOME		家目录
+		$PWD		此刻路径
+		$SHELL		默认shell
+		$USER		当前用户
+		echo 系统变量	查看此系统变量的值
+		用set 命令查看shell中所有的变量
+		
+	2） 自定义变量
+		赋值
+			变量=值	
+			a=2
+			echo $a	输出为2
+		撤销变量
+			unset a
+		静态变量
+			readonly a=5	不能unset 只有当前shell注销之后才会失效
+		全局变量
+			export a	此时，变量a可以在此shell的子shell中被继承
+	3) 读取变量
+		$变量名
+			读取变量中的值
+		${变量名}
+			加上{}是为了给取值加上范围 如${ls /home}
+变量规则
+	1）变量名可以为大写、小写字母，数字，下划线组成，但不能用数字开头。环境变量名建议用大写。
+	2）等号两侧不能有空格
+	3）在bash中，变量默认类型都为字符串，无法直接进行数值运算	比如：a=1+1 echo $a的输出结果为1+1
+	4）变量的值中如果有空格，需要用双引号""或者单引号''括起来	比如：D="My name is Arafat."
+
+特殊变量
+	1）$n	
+		n为数字
+		$0	代表该脚本的名称	例如:echo $n	输出为该脚本的名字
+		$1-9	代表第一到第九个参数	例如：在./test.sh Hello World	此处Hello为第一个参数 World为第二个参数
+		${10}	十个以上的参数要这么写
+	2）$#
+		获得所有输入的参数的个数，常用于循环	
+	3) $*
+		命令行中所有的参数,把所有参数当作一个整体,返回一个字符串
+	4）$@
+		命令行中所有的参数,把所有参数当作独立的token，返回多个字符串
+	5) $?
+		判断上一条命令是否正确执行，返回0为true,返回1为false,返回127是上一条command not find
+	6) $$
+		脚本运行的当前进程ID号
+	7）$!
+		后台运行的最后一个进程的ID号
+
+数据类型
+	1）字符串
+		str='this is a string'
+			单引号里的任何字符都会原样输出，单引号字符串中的变量是无效的
+			单引号字符串中不能出现单独一个的单引号（对单引号使用转义符也不行），但可成对出现，作为字符串拼接使用。
+		str="this is a string"
+			双引号中可以使用变量
+			双引号中可以出现转义符
+		获取字符串长度
+			echo ${#string}
+		提取子字符串
+			echo ${string:0:4}	输出为 this
+		查找子字符串
+			echo `expr index "$str" i`  在strhing中查找字母i
+	2）数组
+		bash支持一维数组，并且没有限制数组的大小
+		
+		声明数组和赋值：
+			array_name=(value0 value1 value2 value3)
+			或者
+			array_name=(
+			value0
+			value1
+			value2
+			value3
+			)
+			还可以单独定义数组的分量
+			array_name[0]=value0
+		取值：
+			${数组名[下标]}
+			valuen=${array_name[n]}
+			使用 @ 符号可以获取数组中的所有元素，例如：
+			echo ${array_name[@]}
+		获取数组的长度
+			length=${#array_name[@]}
+			或者
+			length=${#array_name[*]}
+			获得但个元素的长度
+			lengthn=${#array_name[n]}
+	
+运算符
+	1) $((运算式)) 和 $[运算式]	a=$[4*5+10]	echo $a 输出为30
+	2）expr + - \* / %		注意 乘是\*， 数字和运算符之间要有空格		echo `expr 4 + 2`
+	
+条件判断
+	1) 基本语法
+		[ condition ]	注意：必须有空格，条件非空即为true，如 [ I am arafat ]返回0，[ ]返回1   [ 22 == 23 ] echo $? 返回1
+		然后用echo $？显示判断结果  true返回0，false返回1
+		或运算||也可以写成-o
+		与运算&&也可以写生-a
+		
+		两个整数之间的比较
+			-lt 	less than		-le 	less equal
+			-eq 	equal			-gt 	greater than
+			-ge 	greater equal		-ne 	not equal
+		文件权限判断
+			-r 	拥有读权限		-w 	拥有写权限
+			-x 	拥有执行权限
+		文件类型判断
+			-f 	文件存在并且是一个常规文件（file）
+			-e 	文件存在		-d 	文件存在并且是一个目录（directory）
+		文件其他判断
+			-L	文件是否存在并且是一个符号连接（软连接）
+		字符串的判断
+			= 	比较字符串是否相同
+			!=	比较字符串是否不同
+			-z	检测字符串长度是否为0
+			-n	检测字符串长度是否不为0
+			$	检测字符串是否为空
+			
+echo命令
+	echo -e 开启转义模式
+		echo -e "Hi \nI am arafat"	换行
+		echo -e "Hi \c"
+		echo "It's me"			会和上面一行合并成 Hi It's me
+		echo `date`			显示命令的执行结果	
+
+printf命令
+	printf  format-string  [arguments...]
+		format-string		格式控制字符串
+		arguments		参数列表。
+	比如 	printf "%-10s %-8s %-4.2f\n" 郭靖 男 66.1234	要显示三个输出，就要在""中分别为三个输出指定输出格式,后面要加上\n换行符
+		%s %c %d %f都是格式替代符	s字符串 c单个字符 f浮点 d十进制有符号整数
+		%-10s 一个宽度为10个字符(-表示左对齐，没有则表示右对齐)任何字符都会被显示在10个字符宽的字符内，如果不足则自动以空格填充，超过也会将内容全部显示出来	
+		%-4.2f 指格式化为小数，其中.2指保留2位小数。
+		
+流程控制
+	1）if判断
+		if [ confition ];then
+			statment block
+		elif [ condition ];then
+			statment block
+		else
+			statment block
+		fi
+		或者
+		if [ conditon ]
+			then
+				statment block
+		fi
+	2) case语句
+		case $变量名 in
+		"值1“）
+			statment block
+		;;
+		"值2“）
+			statment block
+		;;
+		*)
+			如果前面的所有case都没有match,则执行这个。相当于default
+		;;
+		esac
+	3)for循环
+		for(( 变量；循环控制条件；变量变化 ))
+		do
+			statment block
+		done
+		或者
+		for 变量 in 值1 值2 ...
+		do
+			statment block
+		done
+	4）while循环
+		while[ condition ]
+		do
+			statment block
+		done
+	5) until循环
+		until[condition]
+		do
+			statment block
+		done
+	6) break
+		跳出循环
+	7）continue
+		继续循环	这里，不会提跳出循环，会回到循环开始
+				
+控制台读取
+	read -选项 参数
+	选项
+		-p	指定读取值时的提示符
+		-t	指定读取值时等待的时间
+	参数
+		变量	指定读取值的变量名
+	
+	read -t 15 -p "Enter password in 15 seconds: " psw	在15秒内输入并将值赋给psw变量
+
+函数
+	1）系统函数
+		basename string/pathname suffix
+			删除/之前的内容显示文件名或者字符串  suffix是可选的要删除的后缀
+		dirname absolutepathn
+			和上一个差不多，删除文件名留下路径
+	2）自定义函数
+		function functionname()
+		{
+			action
+			return int
+		}
+			由于shell脚本是数行运行，所以需要先定义函数才能使用
+			return的值一般用$?来查看，不一定必须有返回值,如果不加，将以最后一条命令运行结果，作为返回值。
+		
+Shell工具
+	1） cut
+		在文件中负责剪切数据
+		cut 选项参数 文件名	
+		选项参数
+			-d 按照指定分割符分割列
+			-f 列号	比如 -f 2 表示第二列  -f 2,3 表示2和3列  -f 3-表示包括第三列之后的所有列
+			ifconfig wlp0s20f3 | grep netmask | cut -d " " -f 10  返回当前机器的ip
+	2）sed 
+		sed是一种流编辑器，它一次处理一行内容。处理时，把当前的行存储在临时缓冲区，称为"模式空间"，接着用sed命令处理缓冲区中的内容，完成后送往屏幕。
+		sed 选项参数 '命令' 文件名
+		选项参数
+			-e	直接在指令列模式上进行sed的动作编辑
+		命令
+			a	新增，a的后面可以接字符串，在下一行出现
+			d	删除
+			s	查找并替换
+		举例：
+			sed "2a Hello" test.txt		在第二行下面加上一行Hello
+			sed "/Hi/d" test.txt			删除文件中的所有Hi的行
+			sed "s/Hi/Hello/g" test.txt		将文件中的Hi替换为Hello,最后的g为全局，如不加只会替换每一行的第一个
+			sed -e "2a Hello" -e "/Hi/d" test.txt	用-e来进行不同命令的组合
+			注意！上面的操作都不会改变元文件中的内容
+	3）awk 
+		一个强大的文本分析工具，把文件逐行读入，以空格为默认分隔符将每行切片，切开的部分在进行处理
+		awk 选项参数 'pattern1{action1} pattern2{action2} ...' 文件名	
+			pattern：表示awk在数据中查找的内容，就是匹配模式。这里需要用到！！！正则表达式！！！
+			action：在找到匹配内容时进行的一系列命令
+		选项参数
+			-F	指定输入的文件拆分隔符 
+			-v	赋值一个用户定义变量,自定义变量初始时必须赋值
+				awk内置变量
+				FILENAME	文件名
+				NR		已读的记录数（行数）可以用这个规定查看的行数
+				NF		浏览记录的域的个数（切割后，列的个数）
+		举例：
+			awk -F : '/^daemon/ {print $2,$5}' passwd	用:进行分割，查找以daemon开头的行，打印第2列和第2列
+			awk -F : 'BEGIN {print "aaa"}{print $1}END{print "BBB"}	用:进行分割，开头加一行aaa,打印所有行的第一列，结尾加一行BBB
+			awk -F : -v i=0 '{i=i+$3} {print i}' passwd	用:进行分割，设置一个变量i并初始赋值0，阶加每一行的第三个列参数的值并打印结果
+			awk -F : '{print "filename: "FILENAME ", line number: "NR ", columns: "NF}' passwd	
+			ifconfig wlp0s20f3 | grep netmask | awk -F " " '{print $2}'	剪切本机ip地址
+			awk '/^$/ {print NR}' test.txt	显示文件中空行的行号	
+	4) sort
+		排序
+		sort 选项 参数
+		选项
+			-n	按照数值的大小排序
+			-r	相反的顺序排序
+			-t	设置排序时的分隔字符
+			-k	指定需要排序的列
